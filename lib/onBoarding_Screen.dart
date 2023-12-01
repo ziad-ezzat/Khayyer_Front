@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'Login_Screen.dart';
 
 class OnboardingScreen extends StatefulWidget {
   @override
@@ -84,7 +87,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             child: TextButton(
               child: const Text('Skip', style: TextStyle(color: Colors.white, fontSize: 18)),
               onPressed: () {
-                // Navigate to home page
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginScreen()),
+                );
               },
             ),
           ),
@@ -135,9 +141,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                 ),
                 child: const Text('Continue', style: TextStyle(color: Colors.white, fontSize: 18)),
-                onPressed: () {
+                onPressed: () async {
                   if (_currentPage == _images.length - 1) {
-                    // Navigate to home page
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => LoginScreen()),
+                    );
                   } else {
                     _pageController.nextPage(
                       duration: const Duration(milliseconds: 300),
