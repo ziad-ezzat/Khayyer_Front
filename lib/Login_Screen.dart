@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'Notifications_Screen.dart';
 import 'shared/components/components.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -162,8 +163,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     text: 'login',
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
-                        print(emailController.text);
-                        print(passwordController.text);
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => NotificationsScreen()),
+                        );
                       }
                     },
                     buttonColor: const Color.fromRGBO(21, 101, 192, 1),
